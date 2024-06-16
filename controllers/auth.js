@@ -19,7 +19,7 @@ const register = async (req, res) => {
     const user = await User.create({...tempUser});
     res.status(StatusCodes.CREATED).json({ user });
 }
-//testing delete
+
 const login = (req, res) => {
 res.send('login user')
 }
