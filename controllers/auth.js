@@ -19,7 +19,13 @@ const login = async (req, res) => {
     const user = await User.findOne({ email });
     
     if (!user) {
-        throw new UnauthenticatedError('Please provide proper credentials');
+        throw new UnauthenticatedError('User does not exist. Please provide proper credentials or register a new account');
+    }
+
+    const isPasswordCorrect = await user.comparePassword(password);
+    
+    if (!isPasswordCorrect) {
+        throw new UnauthenticatedError('Incorrect password');
     }
 
       const token = user.createJWT();
