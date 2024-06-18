@@ -5,6 +5,7 @@ const { BadRequestError, NotFoundError } = require('../errors');
 
 
 const getAllJobs = async (req, res) => {
+    console.log('trying to get all jobs');
     // get all jobs associated with that user id and then sort by creation date
     const jobs = await Job.find({ createdBy: req.user.userId }).sort('createdAt');
     res.status(StatusCodes.OK).json({jobs, count:jobs.length});
