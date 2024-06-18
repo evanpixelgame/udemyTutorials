@@ -2,185 +2,178 @@ openapi: 3.0.0
 info:
   title: Jobs API
   contact: {}
-  version: '1.0'
+  version: "1.0"
 servers:
-- url: https://udemytutorials.onrender.com/api/v1
-  variables: {}
+  - url: https://udemytutorials.onrender.com/api/v1
+    variables: {}
 paths:
   /auth/register:
     post:
       tags:
-      - Auth
+        - Auth
       summary: Register User
       operationId: RegisterUser
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/RegisterPOSTRequest'
-              - example:
-                  name: henry
-                  email: henry@gmail.com
-                  password: henrypass
+                - $ref: "#/components/schemas/RegisterPOSTRequest"
+                - example:
+                    name: henry
+                    email: henry@gmail.com
+                    password: henrypass
             example:
               name: henry
               email: henry@gmail.com
               password: henrypass
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security: []
   /auth/login:
     post:
       tags:
-      - Auth
+        - Auth
       summary: Login User
       operationId: LoginUser
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/LoginPOSTRequest'
-              - example:
-                  email: evan@gmail.com
-                  password: evanpass
+                - $ref: "#/components/schemas/LoginPOSTRequest"
+                - example:
+                    email: evan@gmail.com
+                    password: evanpass
             example:
               email: evan@gmail.com
               password: evanpass
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security: []
   /jobs:
     post:
       tags:
-      - Jobs
+        - Jobs
       summary: Create Job
       operationId: CreateJob
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/CreateJobPOSTRequest'
-              - example:
-                  company: Burger King
-                  position: Royal Jester
+                - $ref: "#/components/schemas/CreateJobPOSTRequest"
+                - example:
+                    company: Burger King
+                    position: Royal Jester
             example:
               company: Burger King
               position: Royal Jester
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
-      - bearer: []
+        - bearer: []
     get:
       tags:
-      - Jobs
+        - Jobs
       summary: Get All Jobs
       operationId: GetAllJobs
       parameters: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
-      - bearer: []
-  /jobs/{id}:
-  parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
-      required: true
-      description: the job id  
+        - bearer: []
+  /user/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The user ID
     get:
       tags:
-      - Jobs
+        - Jobs
       summary: Get Single Job
       operationId: GetSingleJob
       parameters: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
-      - bearer: []
-/jobs/{id}:
-  parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
-      required: true
-      description: the job id  
+        - bearer: []
+
     patch:
       tags:
-      - Jobs
+        - Jobs
       summary: Update Job
       operationId: UpdateJob
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/UpdateJobPATCHRequest'
-              - example:
-                  company: MgRonalds
-                  position: Hamburglar
+                - $ref: "#/components/schemas/UpdateJobPATCHRequest"
+                - example:
+                    company: MgRonalds
+                    position: Hamburglar
             example:
               company: MgRonalds
               position: Hamburglar
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
-      - bearer: []
+        - bearer: []
     delete:
       tags:
-      - Jobs
+        - Jobs
       summary: Delete Job
       operationId: DeleteJob
       parameters: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
-      - bearer: []
+        - bearer: []
 components:
   schemas:
     RegisterPOSTRequest:
       title: RegisterPOSTRequest
       required:
-      - name
-      - email
-      - password
+        - name
+        - email
+        - password
       type: object
       properties:
         name:
@@ -196,8 +189,8 @@ components:
     LoginPOSTRequest:
       title: LoginPOSTRequest
       required:
-      - email
-      - password
+        - email
+        - password
       type: object
       properties:
         email:
@@ -210,8 +203,8 @@ components:
     CreateJobPOSTRequest:
       title: CreateJobPOSTRequest
       required:
-      - company
-      - position
+        - company
+        - position
       type: object
       properties:
         company:
@@ -224,8 +217,8 @@ components:
     UpdateJobPATCHRequest:
       title: UpdateJobPATCHRequest
       required:
-      - company
-      - position
+        - company
+        - position
       type: object
       properties:
         company:
@@ -241,7 +234,7 @@ components:
       scheme: bearer
 security: []
 tags:
-- name: Auth
-  description: ''
-- name: Jobs
-  description: ''
+  - name: Auth
+    description: ""
+  - name: Jobs
+    description: ""
